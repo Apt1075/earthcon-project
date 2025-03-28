@@ -132,7 +132,7 @@ const AboutPage = () => {
               </div>
               <h3 className="mt-3 text-lg font-medium text-gray-900">Expert Knowledge</h3>
               <p className="mt-2 text-gray-600">
-                {/* Our agents have in-depth knowledge of local markets and property values. */}
+                Our agents have in-depth knowledge of local markets and property values.
               </p>
             </div>
             <div className="text-center">
