@@ -1,0 +1,120 @@
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(10, 10, 10, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup-container {
+  display: flex;
+  background: #fff;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 900px;
+  overflow: hidden;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+.popup-left {
+  flex: 1;
+  background: #faf5ef;
+  padding: 30px 20px;
+  min-width: 200px;
+}
+
+.popup-left h3 {
+  color: #b99944;
+  margin-bottom: 20px;
+}
+
+.popup-left ul {
+  list-style: none;
+  padding: 0;
+}
+
+.popup-left li {
+  font-size: 18px;
+  margin: 10px 0;
+  color: #222;
+}
+
+.popup-right {
+  flex: 2;
+  padding: 30px 20px;
+  position: relative;
+}
+
+.popup-close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.popup-right h2 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.popup-right h2 span {
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.popup-right .highlight {
+  color: red;
+}
+
+.popup-form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.popup-form input[type="text"],
+.popup-form input[type="tel"],
+.popup-form input[type="email"] {
+  padding: 12px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.popup-form .consent {
+  font-size: 12px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.popup-form button {
+  background-color: #d4af37;
+  color: #fff;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .popup-container {
+    flex-direction: column;
+  }
+
+  .popup-left, .popup-right {
+    width: 100%;
+  }
+}

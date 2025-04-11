@@ -135,7 +135,7 @@ const ContactPage = () => {
                   <h3 className="text-lg font-medium text-gray-900">Contact</h3>
                   <p className="mt-2 text-gray-600">
                     Phone: (+91) 91400 57425<br />
-                    Email: info@rearthconprojects.com
+                    Email: info@earthconprojects.com
                   </p>
                 </div>
                 <div>

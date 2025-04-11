@@ -78,7 +78,28 @@ const PropertyListingPage = () => {
     bedrooms: 'All',
   });
 
-  const filteredProperties = properties;
+  // const filteredProperties = properties;
+  // const filteredProperties = properties;
+  const filteredProperties = properties.filter((property) => {
+    const { propertyType, priceRange, bedrooms } = filters;
+  
+    const matchType =
+      propertyType === 'All' ||
+      property.title.toLowerCase().includes(propertyType.toLowerCase());
+  
+    const matchPrice = (() => {
+      if (priceRange === 'All') return true;
+      const [min, max] = priceRange.includes('+')
+        ? [parseInt(priceRange.split('+')[0]), Infinity]
+        : priceRange.split('-').map(Number);
+      return property.price >= min && property.price <= max;
+    })();
+  
+    const matchBedrooms =
+      bedrooms === 'All' || property.bedrooms >= parseInt(bedrooms);
+  
+    return matchType && matchPrice && matchBedrooms;
+  });
 
   return (
     <div className="bg-gray-50 py-12">

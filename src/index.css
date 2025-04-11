@@ -2,10 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
+
+.py-16 {
+  padding-top: 0rem;
+  padding-bottom: 4rem;
+}
+/* .py-16 {
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+} */
+.h-20 {
+  height: 8rem;
+} 
+.h-24 {
+  height: 9.5rem;
+}
+.h-28 {
+  height: 11rem;
+}
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
-
+.py-12 {
+  padding-top: 5rem;
+  padding-bottom: 3rem;
+}
+.py-16 {
+  padding-top: 5rem;
+  padding-bottom: 4rem;
+}
 :root {
   --background: 0 0% 100%;
   --foreground: 240 10% 3.9%;

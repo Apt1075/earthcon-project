@@ -1,86 +1,70 @@
-import { useState } from 'react';
+/* eslint-disable import/no-unresolved */
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { Menu, X } from 'lucide-react';
+// import logo from "../assets/image/logo.png";
+import logo from "../../assets/images/logo.png";
 
-const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'Properties', href: '/properties' },
-  { name: 'About', href: '/about' },
-  { name: 'Contact', href: '/contact' },
-];
 
-const Header = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+export default function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
-    <header className="bg-white shadow">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
-        <div className="flex lg:flex-1">
-          <Link to="/" className="-m-1.5 p-1.5">
-            <span className="text-2xl font-bold text-blue-600">RealEstate</span>
-          </Link>
-        </div>
-        <div className="flex lg:hidden">
-          <button
-            type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            <span className="sr-only">Open main menu</span>
-            {mobileMenuOpen ? (
-              <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-            ) : (
-              <Bars3Icon className="h-6 w-6" aria-hidden="true" />
-            )}
-          </button>
-        </div>
-        <div className="hidden lg:flex lg:gap-x-12">
-          {navigation.map((item) => (
-            <Link
-              key={item.name}
-              to={item.href}
-              className="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600"
-            >
-              {item.name}
+    <nav className="bg-white shadow-lg fixed w-full z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16">
+          {/* <div className="flex items-center">
+            <Link to="/" className="flex items-center">
+              <Home className="h-8 w-8 text-blue-600" />
+              <span className="ml-2 text-xl font-bold text-gray-800">ThinkBuy Properties</span>
             </Link>
-          ))}
-        </div>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <Link
-            to="#"
-            className="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-          >
-            List Your Property
-          </Link>
-        </div>
-      </nav>
-
-      {/* Mobile menu */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden">
-          <div className="space-y-1 px-4 pb-3 pt-2">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                className="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-100 hover:text-blue-600"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {item.name}
-              </Link>
-            ))}
-            <Link
-              to="#"
-              className="mt-4 block w-full rounded-md bg-blue-600 px-3 py-2 text-center text-base font-medium text-white hover:bg-blue-500"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              List Your Property
+          </div> */}
+          <div className="flex items-center">
+            <Link to="/" className="flex items-center space-x-2 ">
+              <img
+                src={logo} // Replace with your actual logo path
+                alt="ThinkBuy Logo"
+                className="h-20 w-25"
+              />
             </Link>
           </div>
+          {/* Desktop menu */}
+          <div className="hidden md:flex items-center space-x-8">
+            <Link to="/" className="text-gray-600 hover:text-blue-600">Home</Link>
+            <Link to="/properties" className="text-gray-600 hover:text-blue-600">Properties</Link>
+            <Link to="/about" className="text-gray-600 hover:text-blue-600">About</Link>
+            <Link to="/contact" className="text-gray-600 hover:text-blue-600">Contact</Link>
+            {/* <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 flex items-center">
+              add property
+            </button> */}
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="md:hidden flex items-center">
+            <button onClick={toggleMenu} className="text-gray-600">
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile menu dropdown */}
+      {isOpen && (
+        <div className="md:hidden bg-white shadow-md px-4 py-4 space-y-4">
+          <Link to="/" className="block text-gray-600 hover:text-blue-600" onClick={toggleMenu}>Home</Link>
+          <Link to="/properties" className="block text-gray-600 hover:text-blue-600" onClick={toggleMenu}>Properties</Link>
+          <Link to="/about" className="block text-gray-600 hover:text-blue-600" onClick={toggleMenu}>About</Link>
+          <Link to="/contact" className="block text-gray-600 hover:text-blue-600" onClick={toggleMenu}>Contact</Link>
+          <button className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 flex items-center justify-center">
+            add property
+          </button>
         </div>
       )}
-    </header>
+    </nav>
   );
-};
-
-export default Header;
+}

@@ -6,11 +6,13 @@ import ContactPage from './pages/ContactPage';
 import AboutPage from './pages/AboutPage';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
+import PopupForm from './pages/popup';
 
 function App() {
   return (
     <Router>
       <div className="flex min-h-screen flex-col">
+      <PopupForm />
         <Header />
         <main className="flex-grow">
           <Routes>
